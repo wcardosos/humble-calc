@@ -1,3 +1,8 @@
 export function App() {
-  return <h1 className="font-bold text-3xl">A humble desktop calculator</h1>;
+  return (
+    <main className="flex">
+      <section className="flex-1 h-screen bg-gray-700" />
+      <aside className="grid w-20 h-screen bg-violet-300" />
+    </main>
+  );
 }
