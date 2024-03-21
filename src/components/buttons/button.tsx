@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import clsx from 'clsx';
 
-interface ButtonProps {
+interface ButtonProps extends React.HTMLAttributes<HTMLElement> {
   children: ReactNode;
   withBorder?: {
     left?: boolean;
@@ -11,6 +11,7 @@ interface ButtonProps {
 
 export function Button({
   children,
+  onClick,
   withBorder = { left: false, bottom: false },
 }: ButtonProps) {
   return (
@@ -20,6 +21,7 @@ export function Button({
         withBorder.left && 'border-l-[1px] border-violet-900',
         withBorder.bottom && 'border-b-[1px] border-violet-900',
       )}
+      onClick={onClick}
     >
       {children}
     </button>

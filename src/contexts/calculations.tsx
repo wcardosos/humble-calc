@@ -9,8 +9,9 @@ interface History {
 interface CalculationsContextValues {
   calculationString: string;
   history: History[];
-  setCalculationString: (value: string) => void;
+  setCalculationString: React.Dispatch<React.SetStateAction<string>>;
   calculate: () => void;
+  clear: () => void;
 }
 
 export const CalculationsContext = createContext(
@@ -49,6 +50,8 @@ export function CalculationsProvider({ children }: CalculationsProviderProps) {
     }
   };
 
+  const clear = () => setCalculationString('');
+
   return (
     <CalculationsContext.Provider
       value={{
@@ -56,6 +59,7 @@ export function CalculationsProvider({ children }: CalculationsProviderProps) {
         history,
         setCalculationString,
         calculate,
+        clear,
       }}
     >
       {children}
